@@ -3,6 +3,8 @@ import time
 import pycountry_convert
 import qrcode
 import os
+import platform
+osname = platform.system()
 inputcountry = input("input country by the 2 letter code (for example: BE for belguim, US for the united states): ")
 thing = 'https://raw.githubusercontent.com/robiningelbrecht/wca-rest-api/master/api/competitions/' + inputcountry + '.json'
 r = requests.get(thing)
@@ -13,7 +15,16 @@ def qrgenthing():
         data = "https://www.worldcubeassociation.org/competitions?region=" + countryconverted + "&search=&state=present&year=all+years&from_date=&to_date=&delegate=&display=list"
         img = qrcode.make(data)
         img.save("qrc.png")
-        os.system("powershell.exe .\qrc.png")
+        if osname == "Windows":
+            print("generated a qrcode and saved it to your current directory")
+            os.system("powershell.exe .\qrc.png")
+            time.sleep(2)
+        if osname == "Linux":
+            print("generated a qrcode and saved it to your current directory")
+            time.sleep(2)
+        if osname == "Darwin":
+            print("generated a qrcode and saved it to your current directory")
+            time.sleep(2)
         exit()
     if genqr == "no":
         print("ok")
