@@ -36,7 +36,7 @@ if "size" in str(r.text) and ":1000" in str(r.text):
     print("no comps found")
 else:
     if " " in countryconverted:
-        print("found comps but your country has a space in its name so the link wont work!")
+        print("found comps but your country has a space in its name so no link!")
         time.sleep(5)
         exit()
     print("found comps! check https://www.worldcubeassociation.org/competitions?region=" + countryconverted + "&search=&state=present&year=all+years&from_date=&to_date=&delegate=&display=list")
